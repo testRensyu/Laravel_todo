@@ -58,8 +58,10 @@ Route::post('/response/{id}/sled', 'ResponseController@CreateResponseSled')->nam
 
 
 //パスワードチェック(いまだにわからん。。。なんでgetもpostも書かなきゃいけないのがわからん。。。)
-Route::get('/password_check/{type}/{id}/','PasswordCheckController@show')->name('password.show');
-Route::post('/password_check/{type}/{id}','PasswordCheckController@check')->name('password.check');
+Route::get('/password_check/{model}/{type}/{id}', 'PasswordCheckController@show')->name('password.show');
+Route::post('/password_check/{model}/{type}/{id}', 'PasswordCheckController@check')->name('password.check');
+
+
 
 //修正
 // (GETリクエストはページを表示するために/POSTリクエストはユーザーからのデータを処理するために利用される？)

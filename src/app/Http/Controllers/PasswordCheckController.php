@@ -18,14 +18,14 @@ class PasswordCheckController extends Controller
 
     /*-------------------------------------- パスワードチェックメソッド作成 --------------------------------------*/
     
-    public function passwordcheck (Request $request, $record)
+    public function passwordcheck ($password, $record)
     {
-        if( $request->password !== $record->delete_key ){
+        if( $password !== $record->delete_key ){
             return false;
         }
         return true;
     }
-
+    
     /*------------------------------------------- モデルとタイプ別の分岐 -------------------------------------------*/
 
     public function check(Request $request, $model, $type, $id)
@@ -37,7 +37,7 @@ class PasswordCheckController extends Controller
                 // レコード取得
                 $record = Board::find($id);
                 // パスワードチェック
-                if($this->passwordcheck($request, $record)){
+                if($this->passwordcheck($request->password, $record)){
 
                     // 変数で対応できるかも
                     if($type == "edit" ){
